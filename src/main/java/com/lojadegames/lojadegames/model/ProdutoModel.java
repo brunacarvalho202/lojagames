@@ -40,9 +40,10 @@ public class ProdutoModel {
 	@NotNull
 	private Integer quantidade;
 	
+	//coluna adc
 	@Column(name = "data_lancamento")
 	@JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate dataLancamento;
+         private LocalDate dataLancamento;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	@NotNull(message = "Preço é obrigatório!")
@@ -55,6 +56,8 @@ public class ProdutoModel {
 	@Size(max = 5000, message = "O link da foto não pode ser maior do que 5000 caracteres")
 	private String foto;
 	
+	
+	//relacionamentos
 	@ManyToOne
 	@JsonIgnoreProperties("produto")
 	private CategoriaModel categoria;	
@@ -63,6 +66,8 @@ public class ProdutoModel {
 	@JsonIgnoreProperties("produto")
 	private UsuarioModel usuario;
 
+	
+	//gett e sett
 	public Long getId() {
 		return id;
 	}
