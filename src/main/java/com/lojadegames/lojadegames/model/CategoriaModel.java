@@ -14,22 +14,24 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@Entity
-@Table(name = "tb_categoria")
+@Entity //entidade
+@Table(name = "tb_categoria") //criação da tabela
 public class CategoriaModel {
 	
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue (strategy = GenerationType.IDENTITY) //geração do id
 	private Long id;
 	
 	@NotBlank(message = "O atibuto nome deve conter de 3 a 15 caracteres e não ter espaço em branco")
 	@Size(min = 3, max = 15)
 	private String categoria;
 	
+	//relacionamentos
 	@OneToMany(mappedBy = "categoriamodel", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("categoriamodel")
 	private List<CategoriaModel> categoriamodel;
 		
+	//getters e setters
 	public Long getId() {
 		return id;
 	}
